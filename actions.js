@@ -1,0 +1,1 @@
+check_field=document.getElementById("user").innerHTML
