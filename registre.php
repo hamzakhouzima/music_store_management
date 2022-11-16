@@ -1,3 +1,13 @@
+
+<?php
+    include('scripts.php');
+	// print_r($_POST);
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,15 +22,26 @@
 <body>
 
 
-   <form class="vh-100 gradient-custom" action="scripts.php"  method="post">
-  
+   <form class="vh-100 gradient-custom" action="registre.php"  method="post">
+   
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
+          <?php if (isset($_SESSION['message'])): ?>
+				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">
+				<strong>Please!</strong>
+					<?php 
+						echo $_SESSION['message']; 
+            unset($_SESSION['message']);
+						
+					?>
+				</div>
+			<?php endif ?>
 
             <div class="mb-md-5 mt-md-4 pb-5">
+
 
               <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
               <p class="text-white-50 mb-5">Please enter your informations!</p>
