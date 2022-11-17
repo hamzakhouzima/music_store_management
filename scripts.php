@@ -6,39 +6,39 @@ if(isset($_POST['submit_registration']))  register();
 
 if(isset($_POST['submit_login']))  login();
 
-
+if(isset($_POST['submit_form'])) add();
 
 function register(){
 
     require "connexion.php";
 
-$username=$email=$password="";
 
 
 if($_SERVER["REQUEST_METHOD"]  == "POST"){
-    $username=validate_registre_form($_POST["username"]);
-    $email=validate_registre_form($_POST["email"]);
-    $password=validate_registre_form($_POST["password"]);
+    // $username=validate_registre_form($_POST["username"]);
+    // $email=validate_registre_form($_POST["email"]);
+    // $password=validate_registre_form($_POST["password"]);
       
   
     $username=$_POST["username"];
     $email=$_POST["email"];
     $password=$_POST["password"];
+    $cpassword=$_POST["cpassword"];
     // print_r($_POST)."<br>";
 
 }
 
 
-if (validate_registre_form([1])){
+if (empty($_POST["username"]&&$_POST["email"]&&$_POST["password"]&&$_POST["cpassword"])){
 
-
+    $_SESSION['message']="Fill the form !";
+    
+}
+else{
     $query="INSERT INTO user_infos(username, email, password) VALUES ( '$username','$email','$password')";
     $exe=mysqli_query($connect,$query);
     header("location:login.php"); 
     return true;
-}
-else{
-    $_SESSION['message']="Fill the form !";
         }
 
 }
@@ -52,21 +52,18 @@ $password=$_POST["login_password"];
   $login_request="SELECT * FROM user_infos WHERE email= '$email' AND password='$password' ";
   $execute=mysqli_query($connect,$login_request);
 
-  if (validate_login_form([1]) && mysqli_num_rows($execute)){
+  if ( mysqli_num_rows($execute)>0){
     
     $db_user=mysqli_fetch_assoc($execute);
-   if($db_user['email']=== $email && $db_user['password']===$password ){
+   if($db_user['email']=== $email || $db_user['password']===$password ){
 
-   $_SESSION['log_message']="loged in ";
 
     $_SESSION['email']=$db_user['email'];
     $_SESSION['password']=$db_user['password'];
     header("location:index.php");
-      
-
    }
    else{
-    $_SESSION['log_message']="loged in ";
+    $_SESSION['log_message']="email or password don't match";
 
 
    }
@@ -89,7 +86,7 @@ else{
 
 function validate_registre_form($input){
 
-    if(!empty($_POST["username"] && $_POST["email"] && $_POST["password"] && $_POST["cpassword"] )){
+    if(!empty($_POST["username"] || $_POST["email"] || $_POST["password"] || $_POST["cpassword"] )){
        $input = htmlspecialchars($input);
        $input = trim($input);
        $input = stripslashes($input);
@@ -102,7 +99,7 @@ function validate_registre_form($input){
 
 function validate_login_form($input){
 
-    if(!empty( $_POST["login_email"] && $_POST["login_password"]  )){
+    if(!empty( $_POST["login_email"] || $_POST["login_password"]  )){
       $input = htmlspecialchars($input);
        $input = trim($input);
        $input = stripslashes($input);
@@ -113,6 +110,34 @@ function validate_login_form($input){
 
    }
 
+
+
+function add(){
+
+  require "connexion.php";
+
+    $product_name=$_POST["product_name"]; //bring data in post 
+    $product_price=$_POST["product_price"];
+    $quantity=$_POST["quantity"];
+   if(isset($_POST)){
+
+    header("location:index.php");
+
+   } 
+
+
+
+
+    $product_data="INSERT INTO `products`(  `name`, `price`, `quantity`) VALUES ('$product_name', $product_price,$quantity)  ";
+    $execute=mysqli_query($connect,$product_data);
+
+
+
+
+}
+
+
+   
 
 
 
@@ -141,7 +166,7 @@ else{
     if (mysqli_num_rows($result) > 0){
 
         $admin = mysqli_fetch_assoc($result);
-        if ($admin['email'] === $email && $admin['password'] === $password) {
+        if ($admin['email'] === $email || $admin['password'] === $password) {
 
             $_SESSION['message'] = "Logged in!";
             header('location: login.php');

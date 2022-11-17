@@ -96,6 +96,13 @@
                             <p class="card-text text-start"><span class="fw-bold text-muted">Quantity:</span></p>
                             <p class="card-text text-start"><span class="fw-bold text-muted">Price:</span></p>
                             <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
+                          <button class="btn btn-danger">Delete</button>
+                          <button class="btn btn-success">Modify</button>
+
+
+
+
+                       
                         </div>
                     </div>
             </div>
@@ -127,11 +134,34 @@
         </button>
       </div>
       <div class="modal-body">
-        
+<form action="scripts.php" method="post">
+      <label class="form-label"  >Product Name</label>
+       <input type="text" name="product_name" id="" id="user" class="form-control form-control-lg" placeholder="Product Name"/>
+       <label class="form-label"  >Product Price</label>
+       <input type="text" name="price" id="" id="user" class="form-control form-control-lg" placeholder="Product Price"/>
+       <label class="form-label"  >Quantity</label>
+       <input type="text" name="quantity" id="" id="user" class="form-control form-control-lg" placeholder=" Quantity"/>
+       
+<!-------->
+<div class="dropdown show">
+
+<label class="form-label"  >Type</label> <br>
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Select a Type
+</a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Strings</a>
+    <a class="dropdown-item" href="#">Drums</a>
+    <a class="dropdown-item" href="#">Keyboards</a>
+  </div>
+</div>
+</form>
+<!-------->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit"  name="submit_form" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
