@@ -1,3 +1,7 @@
+<?php
+include 'scripts.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,52 +64,31 @@
         <!-- <div class="header" style="background-color=white;"></div>    -->
         <div class="info">
    <!--------------------------------------------------------------------->
-   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-5">
-            <div class="col">
-                    <div class="card btn bg-white mb-3 p-0" href="#modal-product" data-bs-toggle="modal">
-                        <div style=" height: 300px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('music.jpg');"></div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center text-truncate fs-4 fw-bolder mb-3">Card title</h5>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Category:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Quantity:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Price:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="col">
-                    <div class="card btn bg-white mb-3 p-0" href="#modal-product" data-bs-toggle="modal" >
-                        <div style="height: 300px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('music.jpg');"></div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center text-truncate fs-4 fw-bolder mb-3">Card title</h5>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Category:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Quantity:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Price:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
-                        </div>
-                    </div>
-            </div>
+   <div class="row  mt-5">
             
-            <div class="col">
-                    <div class="card btn bg-white mb-3 p-0" href="#modal-product" data-bs-toggle="modal">
-                        <div style="height: 300px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('music.jpg');"></div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center text-truncate fs-4 fw-bolder mb-3">Card title</h5>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Category:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Quantity:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Price:</span></p>
-                            <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
-                          <button class="btn btn-danger">Delete</button>
-                          <button class="btn btn-success">Modify</button>
-
-
-
-
-                       
-                        </div>
+            <?php
+            $data = get_product();
+            while ($row = mysqli_fetch_assoc($data)) {
+                
+            ?>
+            
+            <div class="col-lg-4">
+                <div class="card btn bg-white mb-3 p-0" href="#modal-product" data-bs-toggle="modal">
+                    <div style="height: 300px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('music.jpg');"></div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-truncate fs-4 fw-bolder mb-3"><?php echo $row['name']?></h5>
+                        <p class="card-text text-start"><span class="fw-bold text-muted">Type: <?php echo $row['type']?></span></p>
+                        <p class="card-text text-start"><span class="fw-bold text-muted">Quantity: <?php echo $row['quantity']?></span></p>
+                        <p class="card-text text-start"><span class="fw-bold text-muted">Price: <?php echo $row['price']?> Dh</span></p>
+                        <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
+                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-success">Modify</button>
                     </div>
+                </div>
             </div>
+            <?php
+            }
+            ?>
 
 
 

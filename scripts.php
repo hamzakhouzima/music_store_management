@@ -141,10 +141,9 @@ function get_product(){
  require "connexion.php";
 
 
-  $get_data="SELECT FROM ";
-
-
-
+  $get_data="SELECT * FROM products";
+  $sql = mysqli_query($connect, $get_data);
+  return $sql;
 }
 
 
