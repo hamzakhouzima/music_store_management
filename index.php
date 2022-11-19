@@ -123,7 +123,7 @@
 
 
 
-
+<form action="index.php" method="post"> <!---->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,7 +134,7 @@
         </button>
       </div>
       <div class="modal-body">
-<form action="scripts.php" method="post">
+
       <label class="form-label"  >Product Name</label>
        <input type="text" name="product_name" id="" id="user" class="form-control form-control-lg" placeholder="Product Name"/>
        <label class="form-label"  >Product Price</label>
@@ -143,20 +143,16 @@
        <input type="text" name="quantity" id="" id="user" class="form-control form-control-lg" placeholder=" Quantity"/>
        
 <!-------->
-<div class="dropdown show">
-
-<label class="form-label"  >Type</label> <br>
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Select a Type
-</a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">Strings</a>
-    <a class="dropdown-item" href="#">Drums</a>
-    <a class="dropdown-item" href="#">Keyboards</a>
-  </div>
-</div>
-</form>
+<div class="mb-3">
+								<label class="form-label">Priority</label>
+								<select class="form-select" name="type" id="task-priority">
+									<option value="">Please select</option>
+									<option value="string">String</option>
+									<option value="keyboards">Keyboards</option>
+									<option value="drums">Drums</option>
+									
+								</select>
+							</div>
 <!-------->
       </div>
       <div class="modal-footer">
@@ -166,7 +162,7 @@ Select a Type
     </div>
   </div>
 </div>
-
+</form>
 
  <!--------------------------------------------------------------------->
 

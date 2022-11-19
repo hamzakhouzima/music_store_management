@@ -25,11 +25,16 @@ if($_SERVER["REQUEST_METHOD"]  == "POST"){
     $password=$_POST["password"];
     $cpassword=$_POST["cpassword"];
     // print_r($_POST)."<br>";
+ 
+   if($password!=$cpassword){
+    $_SESSION["confirmation"]="confirmation isn't right";
+     die();
+   }
 
 }
 
 
-if (empty($_POST["username"]&&$_POST["email"]&&$_POST["password"]&&$_POST["cpassword"])){
+if (empty($_POST["username"])||empty($_POST["email"])||empty($_POST["password"])||empty($_POST["cpassword"]) ){
 
     $_SESSION['message']="Fill the form !";
     
@@ -117,20 +122,26 @@ function add(){
   require "connexion.php";
 
     $product_name=$_POST["product_name"]; //bring data in post 
-    $product_price=$_POST["product_price"];
+    $product_price=$_POST["price"];
     $quantity=$_POST["quantity"];
-   if(isset($_POST)){
-
-    header("location:index.php");
-
-   } 
+    $type=$_POST["type"];
 
 
-
-
-    $product_data="INSERT INTO `products`(  `name`, `price`, `quantity`) VALUES ('$product_name', $product_price,$quantity)  ";
+    $product_data="INSERT INTO `products`( `type`, `name`, `price`, `quantity`) VALUES ('$type','$product_name', '$product_price','$quantity')  ";
     $execute=mysqli_query($connect,$product_data);
 
+
+
+
+}
+
+
+function get_product(){
+
+ require "connexion.php";
+
+
+  $get_data="SELECT FROM ";
 
 
 

@@ -40,6 +40,28 @@
 				</div>
 			<?php endif ?>
 
+      <?php if (isset($_SESSION['confirmation'])): ?>
+				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">
+				<strong>Please!</strong>
+					<?php 
+						echo $_SESSION['confirmation']; 
+             unset($_SESSION['confirmation']);
+						
+					?>
+				</div>
+			<?php endif ?>
+
+      <?php if (isset($_SESSION['confirmation'])): ?>
+				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">
+				<strong>Please!</strong>
+					<?php 
+						echo $_SESSION['confirmation']; 
+             unset($_SESSION['confirmation']);
+						
+					?>
+				</div>
+			<?php endif ?>
+
             <div class="mb-md-5 mt-md-4 pb-5">
 
 
