@@ -8,6 +8,12 @@ if(isset($_POST['submit_login']))  login();
 
 if(isset($_POST['submit_form'])) add();
 
+if(isset($_POST['update'])) updateProduct();
+
+
+if(isset($_POST["delete"])) deleteTask();
+
+
 function register(){
 
     require "connexion.php";
@@ -140,62 +146,65 @@ function get_product(){
 
  require "connexion.php";
 
-
+ 
   $get_data="SELECT * FROM products";
   $sql = mysqli_query($connect, $get_data);
   return $sql;
 }
 
 
+
    
 
 
+// function updateProduct()
+// {
+//     //CODE HERE
 
+    
+//     require "connexion.php";
+//     $id          = $_POST['id'];
+//     $name       = $_POST['product_name'];
+//     $price        = $_POST['price'];
+//     $quantity    = $_POST['quantity'];
+//     $type      = $_POST['type'];
+//     // $date        = $_POST['date'];
+//     // $description = $_POST['description'];
+
+    
+
+//     //SQL UPDATE
+//     $sql = "UPDATE products SET type='$type',name='$name',price='$price',quantity='$quantity'  WHERE id = '$id'";
+//     $query=mysqli_query($connect,$sql);
+
+    
+//         $_SESSION['message'] = "Task has been updated successfully !";
+//         header('location: index.php');
+   
+// }
+
+
+// function deleteTask()
+// {
+//     //CODE HERE
+//     //SQL DELETE  
+//     require "connexion.php";
+//     $id = $_POST['id'];
+   
+//     $request="DELETE FROM products WHERE id=$id";
+
+//     $query=mysqli_query($connect,$request);
+
+//     if($query){
+//         $_SESSION['message'] = "Task has been deleted successfully !";
+//     header('location: index.php');
+//     }
+    
+
+   
+// }
 
 ?>
 
 
 
-<!-- function loginAdmin() {
-
-global $conn;
-//CODE HERE 
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-//Form validation
-if(empty($email) || empty($password)){
-    $_SESSION['message1'] = "Please fill all required fields!!";
-    header('location: login.php');
-}
-else{
-
-    //SQL SELECT
-    $sql = "SELECT * FROM admins WHERE email='$email'";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0){
-
-        $admin = mysqli_fetch_assoc($result);
-        if ($admin['email'] === $email || $admin['password'] === $password) {
-
-            $_SESSION['message'] = "Logged in!";
-            header('location: login.php');
-
-            //Create session to store 
-            $_SESSION['name'] = $admin['name'];
-            $_SESSION['email'] = $admin['email'];
-            $_SESSION['id'] = $admin['id'];
-
-            header('location: index.php');
-        }
-        else{
-            $_SESSION['message1'] = "Incorect password!!";
-            header('location: login.php');
-        }
-    }
-    else{
-        $_SESSION['message1'] = "Your email doesn't match with our records!";
-        header('location: login.php');
-    }
-}
-} -->

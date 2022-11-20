@@ -64,16 +64,21 @@ include 'scripts.php';
         <!-- <div class="header" style="background-color=white;"></div>    -->
         <div class="info">
    <!--------------------------------------------------------------------->
-   <div class="row  mt-5">
+   <div class="row  mt-5" id="main-div">
             
             <?php
             $data = get_product();
             while ($row = mysqli_fetch_assoc($data)) {
+              
                 
+                $id= $row["id"]; 
+
             ?>
             
-            <div class="col-lg-4">
-                <div class="card btn bg-white mb-3 p-0" href="#modal-product" data-bs-toggle="modal">
+            <div class="col-lg-4" id="<?php echo$row["id"]; ?>"> 
+            <span>id="<?php echo$row["id"]; ?>"</span><!--just for test and delete later-->
+            
+                <div class="card btn bg-white mb-3 p-0" href="#modal-product"  data-bs-toggle="modal" >
                     <div style="height: 300px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('music.jpg');"></div>
                     <div class="card-body">
                         <h5 class="card-title text-center text-truncate fs-4 fw-bolder mb-3"><?php echo $row['name']?></h5>
@@ -81,8 +86,8 @@ include 'scripts.php';
                         <p class="card-text text-start"><span class="fw-bold text-muted">Quantity: <?php echo $row['quantity']?></span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Price: <?php echo $row['price']?> Dh</span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
-                    <button class="btn btn-danger">Delete</button>
-                    <button class="btn btn-success">Modify</button>
+                    <button class="btn btn-danger " name="delete"><a class="text-light" href="delete.php?deleteid=<?php echo $id ?>">Delete</a></button>
+                    <button onclick="event()"  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" >Modify</button>
                     </div>
                 </div>
             </div>
@@ -117,7 +122,7 @@ include 'scripts.php';
         </button>
       </div>
       <div class="modal-body">
-
+      <input type="hidden" id="product_id" name="id" >
       <label class="form-label"  >Product Name</label>
        <input type="text" name="product_name" id="" id="user" class="form-control form-control-lg" placeholder="Product Name"/>
        <label class="form-label"  >Product Price</label>
@@ -127,8 +132,8 @@ include 'scripts.php';
        
 <!-------->
 <div class="mb-3">
-								<label class="form-label">Priority</label>
-								<select class="form-select" name="type" id="task-priority">
+								<label class="form-label">Type</label>
+								<select class="form-select" name="type" >
 									<option value="">Please select</option>
 									<option value="string">String</option>
 									<option value="keyboards">Keyboards</option>
@@ -139,8 +144,12 @@ include 'scripts.php';
 <!-------->
       </div>
       <div class="modal-footer">
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  name="submit_form" class="btn btn-primary">Save changes</button>
+        <button type="submit"  name="submit_form" class="btn btn-primary" id="product-save-btn"><a class="text-light">Save changes</button>
+        <button type="submit"  name="update-product" class="btn btn-primary" id="product-save-btn"><a class="text-light" href="update.php?updateid=<?php echo $id ?>">update</button>
+
+        <!-- <button type="submit" name="update" class="btn btn-warning task-action-btn" id="product-update-btn"  >Update</a> -->
       </div>
     </div>
   </div>
@@ -151,16 +160,25 @@ include 'scripts.php';
 
 <link rel="stylesheet" href="style.css">
 
+<!-- <script src="actions.js"></script> -->
 
 
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    function showmodal(modal_id){
+    //we select the value of the element with id="task-id" and affect modal_id as a value , we set modal_id as showmodal() parametre;
+    document.getElementById("task-id").value=modal_id;
+    }
 
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </body>
-
 
 
 
