@@ -8,7 +8,9 @@ if(isset($_POST['submit_login']))  login();
 
 if(isset($_POST['submit_form'])) add();
 
-if(isset($_POST['update'])) updateProduct();
+if(isset($_POST['update-product'])) update();
+
+// if(isset($_POST['update'])) updateProduct();
 
 
 if(isset($_POST["delete"])) deleteTask();
@@ -94,6 +96,17 @@ else{
 
 
 
+function logout(){
+
+
+  session_destroy();
+
+header("location:login.php");
+
+}
+
+
+
 
 function validate_registre_form($input){
 
@@ -136,7 +149,7 @@ function add(){
     $product_data="INSERT INTO `products`( `type`, `name`, `price`, `quantity`) VALUES ('$type','$product_name', '$product_price','$quantity')  ";
     $execute=mysqli_query($connect,$product_data);
 
-
+header("location:index.php");
 
 
 }
@@ -155,7 +168,28 @@ function get_product(){
 
 
    
+function update(){
 
+
+    require 'connexion.php';
+
+
+    
+        $id         =   $_POST['id'];
+        $name       =   $_POST['product_name'];
+        $price      =   $_POST['price'];
+        $quantity   =   $_POST['quantity'];
+        $type       =   $_POST['type'];
+    
+        $request="UPDATE `products` SET `type`='$type',`name`='$name',`price`='$price',`quantity`='$quantity'  where id=$id  ";
+    
+        $query = mysqli_query($connect,$request);
+       
+        
+        header("location:index.php");
+
+
+}
 
 // function updateProduct()
 // {

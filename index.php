@@ -10,6 +10,7 @@ include 'scripts.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -61,7 +62,6 @@ include 'scripts.php';
       </div>
     </div>
     <div class="main_content">
-        <!-- <div class="header" style="background-color=white;"></div>    -->
         <div class="info">
    <!--------------------------------------------------------------------->
    <div class="row  mt-5" id="main-div">
@@ -87,7 +87,7 @@ include 'scripts.php';
                         <p class="card-text text-start"><span class="fw-bold text-muted">Price: <?php echo $row['price']?> Dh</span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
                     <button class="btn btn-danger " name="delete"><a class="text-light" href="delete.php?deleteid=<?php echo $id ?>">Delete</a></button>
-                    <button onclick="event()"  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" >Modify</button>
+                    <button  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" onclick="event()"  >Modify</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ include 'scripts.php';
 
 
 
-<form action="index.php" method="post"> <!---->
+<form action="scripts.php" method="post"> <!---->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -122,7 +122,7 @@ include 'scripts.php';
         </button>
       </div>
       <div class="modal-body">
-      <input type="hidden" id="product_id" name="id" >
+      <input type="hidden" id="product_id" name="id" value="<?php echo $id ?>">
       <label class="form-label"  >Product Name</label>
        <input type="text" name="product_name" id="" id="user" class="form-control form-control-lg" placeholder="Product Name"/>
        <label class="form-label"  >Product Price</label>
@@ -146,8 +146,8 @@ include 'scripts.php';
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  name="submit_form" class="btn btn-primary" id="product-save-btn"><a class="text-light">Save changes</button>
-        <button type="submit"  name="update-product" class="btn btn-primary" id="product-save-btn"><a class="text-light" href="update.php?updateid=<?php echo $id ?>">update</button>
+        <button type="submit"  name="submit_form" class="btn btn-primary" id="product-save-btn" >Save changes</button>
+        <button type="submit"  name="update-product" class="btn btn-primary" id="product-save-btn">update</button>
 
         <!-- <button type="submit" name="update" class="btn btn-warning task-action-btn" id="product-update-btn"  >Update</a> -->
       </div>
@@ -160,7 +160,8 @@ include 'scripts.php';
 
 <link rel="stylesheet" href="style.css">
 
-<!-- <script src="actions.js"></script> -->
+<script src="actions.js"></script>
+
 
 
 <script>
@@ -171,6 +172,16 @@ include 'scripts.php';
     //we select the value of the element with id="task-id" and affect modal_id as a value , we set modal_id as showmodal() parametre;
     document.getElementById("task-id").value=modal_id;
     }
+
+
+    function event(){
+
+// document.getElementById("product-save-btn").style.display='none';
+// document.getElementById("product-update-btn").style.display='block';
+
+
+alert("hhhh");
+}
 
 </script>
 
