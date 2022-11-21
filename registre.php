@@ -46,7 +46,6 @@
 					<?php 
 						echo $_SESSION['confirmation']; 
              unset($_SESSION['confirmation']);
-						
 					?>
 				</div>
 			<?php endif ?>
@@ -60,7 +59,7 @@
 						
 					?>
 				</div>
-			<?php endif ?>
+			<?php endif ?> 
 
             <div class="mb-md-5 mt-md-4 pb-5">
 

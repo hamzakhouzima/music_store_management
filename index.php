@@ -1,5 +1,9 @@
 <?php
 include 'scripts.php';
+
+if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("location:login.php");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +14,7 @@ include 'scripts.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
 
     <title>Document</title>
 </head>
@@ -43,7 +48,7 @@ include 'scripts.php';
     <br>
     <div class="sidebar" >
         
-    <button class="btn btn-success " style="width:99%;" data-toggle="modal" data-target="#exampleModal" >+New Instrument</button>
+    <button class="btn btn-success"  onclick="event2()"  style="width:99%;" data-toggle="modal" data-target="#exampleModal">+New Instrument</button>
     
     
     <ul>
@@ -54,6 +59,11 @@ include 'scripts.php';
             <li><a href="#"><i class="fa fa-gears"></i>Settings</a></li>
             <li><a href="#"><i class="fa fa-address-book"></i>Contact</a></li>
             <li><a href="#"><i class="fa fa-map-pin"></i>Map</a></li>
+            <form method="post">
+            <button  type="submit" class="btn btn-danger" name="logout" >Logout</button>
+
+</form>
+
         </ul> 
         <div class="social_media">
           <a href="#"><i class="fa fa-facebook-f"></i></a>
@@ -87,7 +97,7 @@ include 'scripts.php';
                         <p class="card-text text-start"><span class="fw-bold text-muted">Price: <?php echo $row['price']?> Dh</span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
                     <button class="btn btn-danger " name="delete"><a class="text-light" href="delete.php?deleteid=<?php echo $id ?>">Delete</a></button>
-                    <button  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" onclick="event()"  >Modify</button>
+                    <button  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" onclick="event1()"  >Modify</button>
                     </div>
                 </div>
             </div>
@@ -160,30 +170,11 @@ include 'scripts.php';
 
 <link rel="stylesheet" href="style.css">
 
-<script src="actions.js"></script>
+<script  src="actions.js"></script>
 
 
 
-<script>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
-    }
-    function showmodal(modal_id){
-    //we select the value of the element with id="task-id" and affect modal_id as a value , we set modal_id as showmodal() parametre;
-    document.getElementById("task-id").value=modal_id;
-    }
 
-
-    function event(){
-
-// document.getElementById("product-save-btn").style.display='none';
-// document.getElementById("product-update-btn").style.display='block';
-
-
-alert("hhhh");
-}
-
-</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

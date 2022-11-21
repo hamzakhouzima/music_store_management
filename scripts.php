@@ -10,10 +10,10 @@ if(isset($_POST['submit_form'])) add();
 
 if(isset($_POST['update-product'])) update();
 
-// if(isset($_POST['update'])) updateProduct();
-
-
 if(isset($_POST["delete"])) deleteTask();
+
+if(isset($_POST["logout"])) logout();
+
 
 
 function register(){
@@ -23,20 +23,17 @@ function register(){
 
 
 if($_SERVER["REQUEST_METHOD"]  == "POST"){
-    // $username=validate_registre_form($_POST["username"]);
-    // $email=validate_registre_form($_POST["email"]);
-    // $password=validate_registre_form($_POST["password"]);
-      
+   
   
     $username=$_POST["username"];
     $email=$_POST["email"];
     $password=$_POST["password"];
     $cpassword=$_POST["cpassword"];
-    // print_r($_POST)."<br>";
  
    if($password!=$cpassword){
     $_SESSION["confirmation"]="confirmation isn't right";
-     die();
+       
+     exit();
    }
 
 }
@@ -72,7 +69,9 @@ $password=$_POST["login_password"];
 
 
     $_SESSION['email']=$db_user['email'];
+    $_SESSION['username']=$db_user['username'];
     $_SESSION['password']=$db_user['password'];
+    
     header("location:index.php");
    }
    else{
@@ -100,6 +99,7 @@ function logout(){
 
 
   session_destroy();
+  $_SESSION = array();
 
 header("location:login.php");
 
