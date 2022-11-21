@@ -130,12 +130,52 @@ function validate_login_form($input){
 
    }
 
-function statistics(){
+function statistics($number){
+
+    require 'connexion.php';
+    global $rowcount;
+    global $capital;
+   if($number==1) {
+    $request ="SELECT * FROM products WHERE 1";
+
+    $query=mysqli_query($connect,$request);
+    $rowcount = mysqli_num_rows($query);
+
+   }
+//    elseif($number==2){
+//     $sql = "SELECT COUNT(price) as capital FROM products";
+
+//             $result = mysqli_query($connect, $sql);
+//             $data   = mysqli_fetch_assoc($result);
+//             echo $data['product'];
+
+//    }
+//    elseif($number==3){
+
+// echo 'how';
+
+//    }
+    
 
 
 
 }
+// product_statistics();
+// function capital(){
+// require 'connexion.php';
 
+    
+// $sql="SELECT  SUM(price) FROM products";
+
+// $result=mysqli_query($connect,$sql);
+
+// $count= mysqli_fetch_assoc($result);
+
+
+
+
+// }
+// capital();
 
 
 
@@ -194,6 +234,8 @@ function update(){
 
 }
 
+
+// capital();
 // function updateProduct()
 // {
 //     //CODE HERE

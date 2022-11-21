@@ -74,13 +74,47 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
         <h1 class="mb-3">Music Is The Answer</h1>
         <h4 class=" mb-3 ">Keep it Electronic</h4>
         <button class="btn btn-success"  onclick="event2()"   data-toggle="modal" data-target="#exampleModal">+Add new instrument</button>
+        <form method="post"  id="logoutmedia" style="display:none;">
+            <button  type="submit" class="btn btn-dark bg-dark" name="logout" >Logout</button>
+      
+</form>
       </div>
     </div>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><?php echo  $rowcount; ?> Products Remains in warehouse</h5>
+        <p class="card-text"></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text"><?php statistics(1); ?></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
    <!----------------------------------------------------col-md-6  mt-5->-------------------->
-   <div class=" container row  col-lg-12  mt-5 " id="main-div"> 
+   <div class=" container-fluid row  col-lg-12  mt-4 " id="main-div"> 
 
             <?php
             $data = get_product();
