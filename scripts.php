@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"]  == "POST"){
  
    if($password!=$cpassword){
     $_SESSION["confirmation"]="confirmation isn't right";
-       
+       header("location:register.php");
      exit();
    }
 
@@ -42,7 +42,8 @@ if($_SERVER["REQUEST_METHOD"]  == "POST"){
 if (empty($_POST["username"])||empty($_POST["email"])||empty($_POST["password"])||empty($_POST["cpassword"]) ){
 
     $_SESSION['message']="Fill the form !";
-    
+    header("location:register.php");
+    exit();
 }
 else{
     $query="INSERT INTO user_infos(username, email, password) VALUES ( '$username','$email','$password')";
@@ -76,17 +77,12 @@ $password=$_POST["login_password"];
    }
    else{
     $_SESSION['log_message']="email or password don't match";
-
-
+    header("location:login.php");
+    exit();
    }
-
-
-    
-    return true;
 }
 else{
     $_SESSION['login_message']="Fill the fields to login  !";
-    // header("location:login.php"); 
 
         }
 
@@ -133,6 +129,13 @@ function validate_login_form($input){
     
 
    }
+
+function statistics(){
+
+
+
+}
+
 
 
 
@@ -239,6 +242,3 @@ function update(){
 // }
 
 ?>
-
-
-

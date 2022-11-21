@@ -36,46 +36,52 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
             <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">contact</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Pricing</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Social</a> </li>
+            
+
+<div class="text-light mt-2"  style="margin-left:190px;white-space: nowrap;">
+ <strong>   <?php echo'hello '.$_SESSION['username'].' do you want to ';?> </strong>
+</div>
+
+<form method="post"  id="logout">
+            <button  type="submit" class="btn btn-dark bg-dark" name="logout" >Logout</button>
+      
+</form>
         </ul>
-        <form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0"> <input class="form-control mr-sm-2" type="text" placeholder="Search"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> </form>
+
+
     </div>
    
 </nav>
 </header>
 <br>
 
-<div class="wrapper">
+<!-- <div class="wrapper"> -->
     <br>
-    <div class="sidebar" >
-        
-    <button class="btn btn-success"  onclick="event2()"  style="width:99%;" data-toggle="modal" data-target="#exampleModal">+New Instrument</button>
-    
-    
-    <ul>
-            <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href="#"><i class="fa fa-user"></i>Users</a></li>
-            <li><a href="#"><i class="fa fa-line-chart"></i>Timeline</a></li>
-            <li><a href="#"><i class="fa fa-comment-o"></i>Comments</a></li>
-            <li><a href="#"><i class="fa fa-gears"></i>Settings</a></li>
-            <li><a href="#"><i class="fa fa-address-book"></i>Contact</a></li>
-            <li><a href="#"><i class="fa fa-map-pin"></i>Map</a></li>
-            <form method="post">
-            <button  type="submit" class="btn btn-danger" name="logout" >Logout</button>
+<!--     
+    <div class="main_content">
+        <div class="info"> -->
 
-</form>
+<!---->
 
-        </ul> 
-        <div class="social_media">
-          <a href="#"><i class="fa fa-facebook-f"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
+<!-- Hero -->
+<div class="p-5 text-center bg-image rounded-3" style="
+    background-image: url('backgroundx.jpg');
+    height: 400px;
+  ">
+  <div class="mask" > <!---style="background-color: rgba(0, 0, 0, 0);"--->
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <h1 class="mb-3">Music Is The Answer</h1>
+        <h4 class=" mb-3 ">Keep it Electronic</h4>
+        <button class="btn btn-success"  onclick="event2()"   data-toggle="modal" data-target="#exampleModal">+Add new instrument</button>
       </div>
     </div>
-    <div class="main_content">
-        <div class="info">
-   <!--------------------------------------------------------------------->
-   <div class="row  mt-5" id="main-div">
-            
+  </div>
+</div>
+
+   <!----------------------------------------------------col-md-6  mt-5->-------------------->
+   <div class=" container row  col-lg-12  mt-5 " id="main-div"> 
+
             <?php
             $data = get_product();
             while ($row = mysqli_fetch_assoc($data)) {
@@ -86,7 +92,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
             ?>
             
             <div class="col-lg-4" id="<?php echo$row["id"]; ?>"> 
-            <span>id="<?php echo$row["id"]; ?>"</span><!--just for test and delete later-->
+           
             
                 <div class="card btn bg-white mb-3 p-0" href="#modal-product"  data-bs-toggle="modal" >
                     <div style="height: 300px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('music.jpg');"></div>
@@ -174,8 +180,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
 
 
 
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

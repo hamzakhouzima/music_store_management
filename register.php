@@ -22,7 +22,7 @@
 <body>
 
 
-   <form class="vh-100 gradient-custom" action="registre.php"  method="post">
+   <form class="vh-100 gradient-custom" action="register.php"  method="post">
    
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -40,15 +40,7 @@
 				</div>
 			<?php endif ?>
 
-      <?php if (isset($_SESSION['confirmation'])): ?>
-				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">
-				<strong>Please!</strong>
-					<?php 
-						echo $_SESSION['confirmation']; 
-             unset($_SESSION['confirmation']);
-					?>
-				</div>
-			<?php endif ?>
+     
 
       <?php if (isset($_SESSION['confirmation'])): ?>
 				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">

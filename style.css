@@ -114,11 +114,21 @@ body{
    
    
    }
-   #dropdown_menu{
-       left:-3cm;
-   }
    
-   #searchbar{
-       margin-left:-8cm;
-   }
-   
+  
+   /* #addbtn {
+    display:block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left:50px;
+    
+  } */
+
+
+  #logout {
+
+margin-left: auto;
+
+
+  }
