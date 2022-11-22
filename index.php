@@ -1,10 +1,33 @@
 <?php
 include 'scripts.php';
 
-if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("location:login.php");
-
-
+if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("location:login.php");  
 ?>
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +39,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 
-    <title>Document</title>
+    <title>Music Is The Answer</title>
 </head>
 <body>
 
@@ -73,7 +96,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
       <div class="text-white">
         <h1 class="mb-3">Music Is The Answer</h1>
         <h4 class=" mb-3 ">Keep it Electronic</h4>
-        <button class="btn btn-success"  onclick="event2()"   data-toggle="modal" data-target="#exampleModal">+Add new instrument</button>
+        <button class="btn btn-success"  onclick="event2();reset_form()"   data-toggle="modal" data-target="#exampleModal">+Add new instrument</button>
         <form method="post"  id="logoutmedia" style="display:none;">
             <button  type="submit" class="btn btn-dark bg-dark" name="logout" >Logout</button>
       
@@ -138,7 +161,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
                         <p class="card-text text-start"><span class="fw-bold text-muted">Price: <?php echo $row['price']?> Dh</span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Description:<?php echo $row['description']?></span></p>
                     <button class="btn btn-danger " name="delete"><a class="text-light" href="delete.php?deleteid=<?php echo $id ?>">Delete</a></button>
-                    <button  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" onclick="event1()"  >Modify</button>
+                    <button  class="btn btn-success" name="modify"   data-toggle="modal" data-target="#exampleModal" onclick="getData('<?php echo $row['id']?>','<?php echo $row['name']?>','<?php echo $row['type']?>','<?php echo $row['quantity']?>','<?php echo $row['price']?>','<?php echo $row['description']?>')" >Modify</button>
                     </div>
                 </div>
             </div>
@@ -162,7 +185,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
 
 
 
-<form action="scripts.php" method="post"> <!---->
+<form action="scripts.php" method="post" id="product-form"> <!---->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -173,18 +196,18 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
         </button>
       </div>
       <div class="modal-body">
-      <input type="hidden" id="product_id" name="id" value="<?php echo $id ?>">
+      <input type="hidden" id="product_id" name="id" >
       <label class="form-label"  >Product Name</label>
-       <input type="text" name="product_name" id="" id="user" class="form-control form-control-lg" placeholder="Product Name"/>
+       <input type="text" name="product_name" id="name" class="form-control form-control-lg" placeholder="Product Name"/>
        <label class="form-label"  >Product Price</label>
-       <input type="text" name="price" id="" id="user" class="form-control form-control-lg" placeholder="Product Price"/>
+       <input type="text" name="price" id="price" class="form-control form-control-lg" placeholder="Product Price"/>
        <label class="form-label"  >Quantity</label>
-       <input type="text" name="quantity" id="" id="user" class="form-control form-control-lg" placeholder=" Quantity"/>
+       <input type="text" name="quantity" id="quantity" class="form-control form-control-lg" placeholder=" Quantity"/>
        
 <!-------->
 <div class="mb-3">
 								<label class="form-label">Type</label>
-								<select class="form-select" name="type" >
+								<select class="form-select" name="type" id="type" >
 									<option value="">Please select</option>
 									<option value="string">String</option>
 									<option value="keyboards">Keyboards</option>
@@ -193,8 +216,8 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
 								</select>
 							</div>
                             <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3" placeholder="Description"></textarea>
+  <label for="description" class="form-label" >Description</label>
+  <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description"></textarea>
 </div>
 
 <!-------->
@@ -202,8 +225,8 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  name="submit_form" class="btn btn-primary" id="product-save-btn" >Save changes</button>
-        <button type="submit"  name="update-product" class="btn btn-primary" id="product-save-btn">update</button>
+        <button type="submit"  name="submit_form" class="btn btn-primary" id="product-save-btn"  >Save changes</button>
+        <button type="submit"  name="update-product" class="btn btn-primary" id="product-update-btn" >update</button>
 
         <!-- <button type="submit" name="update" class="btn btn-warning task-action-btn" id="product-update-btn"  >Update</a> -->
       </div>
@@ -212,6 +235,15 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
 </div>
 </form>
 
+ <!--------------------------------------------------------------------->
+
+
+   
+    
+ 
+ 
+ 
+ 
  <!--------------------------------------------------------------------->
 
 <link rel="stylesheet" href="style.css">

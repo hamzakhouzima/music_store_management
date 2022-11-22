@@ -25,10 +25,10 @@ function register(){
 if($_SERVER["REQUEST_METHOD"]  == "POST"){
    
   
-    $username=$_POST["username"];
-    $email=$_POST["email"];
-    $password=$_POST["password"];
-    $cpassword=$_POST["cpassword"];
+    $username   =   $_POST["username"];
+    $email      =   $_POST["email"];
+    $password   =   $_POST["password"];
+    $cpassword  =   $_POST["cpassword"];
  
    if($password!=$cpassword){
     $_SESSION["confirmation"]="confirmation isn't right";
@@ -57,8 +57,8 @@ else{
 function login(){
  require 'connexion.php';
 
-$email=$_POST["login_email"];
-$password=$_POST["login_password"];
+$email      =   $_POST["login_email"];
+$password   =   $_POST["login_password"];
 
   $login_request="SELECT * FROM user_infos WHERE email= '$email' AND password='$password' ";
   $execute=mysqli_query($connect,$login_request);
@@ -69,9 +69,9 @@ $password=$_POST["login_password"];
    if($db_user['email']=== $email || $db_user['password']===$password ){
 
 
-    $_SESSION['email']=$db_user['email'];
-    $_SESSION['username']=$db_user['username'];
-    $_SESSION['password']=$db_user['password'];
+    $_SESSION['email']      =   $db_user['email'];
+    $_SESSION['username']   =   $db_user['username'];
+    $_SESSION['password']   =   $db_user['password'];
     
     header("location:index.php");
    }
@@ -146,11 +146,11 @@ function add(){
 
   require "connexion.php";
 
-    $product_name=$_POST["product_name"]; //bring data in post 
-    $product_price=$_POST["price"];
-    $quantity=$_POST["quantity"];
-    $type=$_POST["type"];
-    $description=$_POST["description"];
+    $product_name   =   $_POST["product_name"]; //bring data in post 
+    $product_price  =   $_POST["price"];
+    $quantity       =   $_POST["quantity"];
+    $type           =   $_POST["type"];
+    $description    =   $_POST["description"];
 
     $product_data="INSERT INTO `products`( `type`, `name`, `price`, `quantity`, `description`) VALUES ('$type','$product_name', '$product_price','$quantity','$description')  ";
     $execute=mysqli_query($connect,$product_data);
@@ -181,12 +181,12 @@ function update(){
 
 
     
-        $id         =   $_POST['id'];
-        $name       =   $_POST['product_name'];
-        $price      =   $_POST['price'];
-        $quantity   =   $_POST['quantity'];
-        $type       =   $_POST['type'];
-        $description=$_POST["description"];
+        $id             =   $_POST['id'];
+        $name           =   $_POST['product_name'];
+        $price          =   $_POST['price'];
+        $quantity       =   $_POST['quantity'];
+        $type           =   $_POST['type'];
+        $description    =   $_POST["description"];
         $request="UPDATE `products` SET `type`='$type',`name`='$name',`price`='$price',`quantity`='$quantity',`description`='$description'  where id=$id  ";
     
         $query = mysqli_query($connect,$request);
