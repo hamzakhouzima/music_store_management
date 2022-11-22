@@ -109,7 +109,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><i class="bi bi-bar-chart-fill"></i><?php statistics(1);?> Products Remains in warehouse</h5>
+        <h5 class="card-title"><i class="bi bi-bar-chart-fill"></i> <?php statistics(1);?> Products Remains in warehouse</h5>
         <p class="card-text"></p>
         <a href="#main-div" class="btn btn-primary" id="btn-scroll">See Stock</a>
       </div>
@@ -227,7 +227,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit"  name="submit_form" class="btn btn-primary" id="product-save-btn"  >Save changes</button>
         <button type="submit"  name="update-product" class="btn btn-primary" id="product-update-btn" >update</button>
-
+       
         <!-- <button type="submit" name="update" class="btn btn-warning task-action-btn" id="product-update-btn"  >Update</a> -->
       </div>
     </div>
