@@ -32,7 +32,7 @@ function event2(){
    }
    function scroll(){
 
-    window.scrollY(-300, -300);
+    window.scrollY(-300, - 300);
 
 
 

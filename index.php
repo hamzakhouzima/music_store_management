@@ -42,7 +42,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
  <strong>   <?php echo'hello '.$_SESSION['username'].' do you want to ';?> </strong>
 </div>
 
-<form method="post"  id="logout">
+<form class="mt-0" method="post"  id="logout">
             <button  type="submit" class="btn btn-dark bg-dark" name="logout" >Logout</button>
       
 </form>
@@ -86,17 +86,17 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><?php echo  $rowcount; ?> Products Remains in warehouse</h5>
+        <h5 class="card-title"><i class="bi bi-bar-chart-fill"></i><?php statistics(1);?> Products Remains in warehouse</h5>
         <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
-    </div>
+    </div>   
   </div>
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text"><?php statistics(1); ?></p>
+        <h5 class="card-title"><i class="bi bi-person-fill"></i> <?php statistics(2); echo' Users Are Signed up';  ?></h5>
+        
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
       
@@ -105,9 +105,9 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title"><i class="bi bi-arrow-up-square-fill"></i><br><?php echo'Most Expensive: '; statistics(3);   ?></h5> 
+        <p class="card-text"></p>
+        <a href="#main-div" class="btn btn-primary">Go somewhere</a>
       </div>
       
     </div>

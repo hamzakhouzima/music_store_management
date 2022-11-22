@@ -133,28 +133,31 @@ function validate_login_form($input){
 function statistics($number){
 
     require 'connexion.php';
-    global $rowcount;
-    global $capital;
+    
    if($number==1) {
     $request ="SELECT * FROM products WHERE 1";
 
     $query=mysqli_query($connect,$request);
     $rowcount = mysqli_num_rows($query);
+    echo $rowcount ."<br>";
+   }
+   elseif($number==2){
+    $sql = "SELECT * FROM user_infos WHERE 1 ";
+
+            $result = mysqli_query($connect, $sql);
+            $data   = mysqli_num_rows($result);
+            echo $data ."<br>";
 
    }
-//    elseif($number==2){
-//     $sql = "SELECT COUNT(price) as capital FROM products";
+   elseif($number==3){
 
-//             $result = mysqli_query($connect, $sql);
-//             $data   = mysqli_fetch_assoc($result);
-//             echo $data['product'];
+     $sql="SELECT MAX(price) as max  FROM products";
 
-//    }
-//    elseif($number==3){
+     $result = mysqli_query($connect,$sql);
+     $data = mysqli_fetch_assoc($result);
+     echo $data['max'];
 
-// echo 'how';
-
-//    }
+   }
     
 
 
