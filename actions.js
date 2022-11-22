@@ -7,10 +7,6 @@
 
 
 
-function showmodal(modal_id){
-    //we select the value of the element with id="task-id" and affect modal_id as a value , we set modal_id as showmodal() parametre;
-    document.getElementById("product_id").value=modal_id;
-    }
 
 
 function event1(){
@@ -26,17 +22,17 @@ function event1(){
     }
 
 function event2(){
+    document.getElementById("product-save-btn").style.display='block';
+    document.getElementById("product-update-btn").style.display='none';
 
-     document.getElementsByName("submit_form").style.display='block'; //bring it with query 
-    document.getElementsByName("update-product").style.display='none';
 
-
-    // alert("hahahaha");
    }
+
+
+
    function scroll(){
 
     let scrollY=window.pageYOffset
-    //console.log(scrollY)
     let position_category=document.querySelector('#main-div').offsetHeight;
     
     let position_top=document.querySelector('#main-div').offsetTop
@@ -51,3 +47,33 @@ function event2(){
     window.pageYOffset=position_top
    })
  
+
+
+
+
+
+
+
+   function getData(id,name,type,quantity,price,description){
+   
+    event1()
+
+      document.getElementById("product_id").value = id;
+      document.getElementById("name").value= name;
+      document.getElementById("type").value= type;
+      document.getElementById("quantity").value= quantity;
+      document.getElementById("price").value= price;
+      document.getElementById("description").value=description;
+
+      
+
+
+    
+     
+  
+  }
+
+  function reset_form(){
+    document.getElementById("product-form").reset();
+}
+
