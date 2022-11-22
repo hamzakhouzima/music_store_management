@@ -88,7 +88,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
       <div class="card-body">
         <h5 class="card-title"><i class="bi bi-bar-chart-fill"></i><?php statistics(1);?> Products Remains in warehouse</h5>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#main-div" class="btn btn-primary" id="btn-scroll">See Stock</a>
       </div>
     </div>   
   </div>
@@ -97,7 +97,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
       <div class="card-body">
         <h5 class="card-title"><i class="bi bi-person-fill"></i> <?php statistics(2); echo' Users Are Signed up';  ?></h5>
         
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#main-div" class="btn btn-primary">See Stock</a>
       </div>
       
     </div>
@@ -105,14 +105,15 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><i class="bi bi-arrow-up-square-fill"></i><br><?php echo'Most Expensive: '; statistics(3);   ?></h5> 
+        <h5 class="card-title"><i class="bi bi-arrow-up-square-fill"></i><br><?php echo'Most Expensive: '; statistics(3);echo' Dh';   ?></h5> 
         <p class="card-text"></p>
-        <a href="#main-div" class="btn btn-primary">Go somewhere</a>
+        <a href="#main-div" class="btn btn-primary">See Stock</a>
       </div>
       
     </div>
   </div>
 </div>
+
    <!----------------------------------------------------col-md-6  mt-5->-------------------->
    <div class=" container-fluid row  col-lg-12  mt-4 " id="main-div"> 
 
@@ -135,7 +136,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
                         <p class="card-text text-start"><span class="fw-bold text-muted">Type: <?php echo $row['type']?></span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Quantity: <?php echo $row['quantity']?></span></p>
                         <p class="card-text text-start"><span class="fw-bold text-muted">Price: <?php echo $row['price']?> Dh</span></p>
-                        <p class="card-text text-start"><span class="fw-bold text-muted">Description:</span></p>
+                        <p class="card-text text-start"><span class="fw-bold text-muted">Description:<?php echo $row['description']?></span></p>
                     <button class="btn btn-danger " name="delete"><a class="text-light" href="delete.php?deleteid=<?php echo $id ?>">Delete</a></button>
                     <button  class="btn btn-success"   data-toggle="modal" data-target="#exampleModal" onclick="event1()"  >Modify</button>
                     </div>
@@ -166,7 +167,7 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add To Stock</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -191,6 +192,11 @@ if(!isset( $_SESSION['username'])&&!isset($_SESSION['password'])) header("locati
 									
 								</select>
 							</div>
+                            <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3" placeholder="Description"></textarea>
+</div>
+
 <!-------->
       </div>
       <div class="modal-footer">

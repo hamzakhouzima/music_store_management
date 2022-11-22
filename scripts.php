@@ -104,31 +104,6 @@ header("location:login.php");
 
 
 
-function validate_registre_form($input){
-
-    if(!empty($_POST["username"] || $_POST["email"] || $_POST["password"] || $_POST["cpassword"] )){
-       $input = htmlspecialchars($input);
-       $input = trim($input);
-       $input = stripslashes($input);
-       return array( $input,true); 
-
-       }
-    
-
-   }
-
-function validate_login_form($input){
-
-    if(!empty( $_POST["login_email"] || $_POST["login_password"]  )){
-      $input = htmlspecialchars($input);
-       $input = trim($input);
-       $input = stripslashes($input);
-       return array( $input,true); 
-
-       }
-    
-
-   }
 
 function statistics($number){
 
@@ -163,22 +138,7 @@ function statistics($number){
 
 
 }
-// product_statistics();
-// function capital(){
-// require 'connexion.php';
 
-    
-// $sql="SELECT  SUM(price) FROM products";
-
-// $result=mysqli_query($connect,$sql);
-
-// $count= mysqli_fetch_assoc($result);
-
-
-
-
-// }
-// capital();
 
 
 
@@ -190,9 +150,9 @@ function add(){
     $product_price=$_POST["price"];
     $quantity=$_POST["quantity"];
     $type=$_POST["type"];
+    $description=$_POST["description"];
 
-
-    $product_data="INSERT INTO `products`( `type`, `name`, `price`, `quantity`) VALUES ('$type','$product_name', '$product_price','$quantity')  ";
+    $product_data="INSERT INTO `products`( `type`, `name`, `price`, `quantity`, `description`) VALUES ('$type','$product_name', '$product_price','$quantity','$description')  ";
     $execute=mysqli_query($connect,$product_data);
 
 header("location:index.php");
@@ -226,8 +186,8 @@ function update(){
         $price      =   $_POST['price'];
         $quantity   =   $_POST['quantity'];
         $type       =   $_POST['type'];
-    
-        $request="UPDATE `products` SET `type`='$type',`name`='$name',`price`='$price',`quantity`='$quantity'  where id=$id  ";
+        $description=$_POST["description"];
+        $request="UPDATE `products` SET `type`='$type',`name`='$name',`price`='$price',`quantity`='$quantity',`description`='$description'  where id=$id  ";
     
         $query = mysqli_query($connect,$request);
        
@@ -238,52 +198,8 @@ function update(){
 }
 
 
-// capital();
-// function updateProduct()
-// {
-//     //CODE HERE
-
-    
-//     require "connexion.php";
-//     $id          = $_POST['id'];
-//     $name       = $_POST['product_name'];
-//     $price        = $_POST['price'];
-//     $quantity    = $_POST['quantity'];
-//     $type      = $_POST['type'];
-//     // $date        = $_POST['date'];
-//     // $description = $_POST['description'];
-
-    
-
-//     //SQL UPDATE
-//     $sql = "UPDATE products SET type='$type',name='$name',price='$price',quantity='$quantity'  WHERE id = '$id'";
-//     $query=mysqli_query($connect,$sql);
-
-    
-//         $_SESSION['message'] = "Task has been updated successfully !";
-//         header('location: index.php');
-   
-// }
 
 
-// function deleteTask()
-// {
-//     //CODE HERE
-//     //SQL DELETE  
-//     require "connexion.php";
-//     $id = $_POST['id'];
-   
-//     $request="DELETE FROM products WHERE id=$id";
 
-//     $query=mysqli_query($connect,$request);
-
-//     if($query){
-//         $_SESSION['message'] = "Task has been deleted successfully !";
-//     header('location: index.php');
-//     }
-    
-
-   
-// }
 
 ?>
